@@ -1,0 +1,44 @@
+package com.shekhovtsov.tracker.controller;
+
+
+import com.shekhovtsov.tracker.dto.IssueDto;
+import com.shekhovtsov.tracker.service.IssueService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequiredArgsConstructor
+@Slf4j
+public class IssueController {
+
+    private final IssueService issueService;
+
+    @GetMapping("/api/v1/issue")
+    public List<IssueDto> getList() {
+        return issueService.getAllIssues();
+    }
+
+    @GetMapping("/api/v1/issue/{id}")
+    public IssueDto getBookById(@PathVariable(name = "id") Long id)  {
+        return issueService.getIssueById(id);
+    }
+
+    @DeleteMapping("/api/v1/issue/{id}")
+    public void deleteBookById(@PathVariable(name = "id") Long id) {
+        issueService.deleteIssueById(id);
+    }
+
+    @PutMapping("/api/v1/issue/{id}")
+    public IssueDto updateBook(@RequestBody IssueDto issueDto )  {
+        return issueService.updateIssue(issueDto);
+    }
+
+    @PostMapping("/api/v1/issue")
+    public IssueDto createBook(@RequestBody IssueDto issueDto)  {
+        return issueService.createIssue(issueDto);
+    }
+
+}
