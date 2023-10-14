@@ -2,13 +2,15 @@ package com.shekhovtsov.tracker.converter;
 
 import com.shekhovtsov.tracker.dto.IssueDto;
 import com.shekhovtsov.tracker.model.Issue;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
-import java.awt.print.Book;
-
+@Component
+@RequiredArgsConstructor
 public class IssueConverter {
 
-
     public IssueDto entityToDto(Issue issue) {
-        return new IssueDto(issue.getId(), issue.getVisibleId(), issue.getTitle(), issue.getDescription(), issue.getStatus(), issue.getPriority(), issue.getLabels(), issue.getAssignee());
+        return new IssueDto(issue.getId(), issue.getVisibleId(), issue.getTitle(), issue.getDescription(), issue.getStatus().toString(), issue.getPriority(), issue.getAssignee());
     }
+
 }

@@ -15,13 +15,12 @@ import java.util.List;
 @AllArgsConstructor
 public class IssueDto {
 
-    private String id;
+    private Long id;
     private String visibleId;
     private String title;
     private String description;
-    private IssueStatus status;
+    private String status;
     private Issue.Priority priority;
-    private List<Label> labels;
     private User assignee;
 
 }

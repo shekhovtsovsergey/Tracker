@@ -1,5 +1,27 @@
-INSERT INTO BOOKS (NAME, AUTHOR_ID,GENRE_ID) VALUES ('Ned ad trappen, ud på gaden (Danish Edition)',1,1);
-INSERT INTO BOOKS (NAME, AUTHOR_ID,GENRE_ID) VALUES ('Kesses krig (Unge læsere) (Danish Edition)',1,1);
-INSERT INTO BOOKS (NAME, AUTHOR_ID,GENRE_ID) VALUES ('Hjørnestuen og månehavet: Erindringer 1934-1938 (Danish Edition)',2,2);
-INSERT INTO BOOKS (NAME, AUTHOR_ID,GENRE_ID) VALUES ('Vandgården: Roman (Danish Edition)',2,2);
-INSERT INTO BOOKS (NAME, AUTHOR_ID,GENRE_ID) VALUES ('Thea (Danish Edition)',1,1);
+INSERT INTO users (name, email) VALUES
+                                    ('John Smith', 'john.smith@example.com'),
+                                    ('Emma Johnson', 'emma.johnson@example.com'),
+                                    ('Michael Davis', 'michael.davis@example.com'),
+                                    ('Emily Wilson', 'emily.wilson@example.com'),
+                                    ('Daniel Thompson', 'daniel.thompson@example.com');
+
+INSERT INTO issues (visible_id, title, description, status, priority, assignee_id) VALUES
+                                                                                       ('ISS-001', 'Bug in login page', 'There is a bug in the login page where users cannot enter their credentials.', 'Open', 'High', 1),
+                                                                                       ('ISS-002', 'Design issue in homepage', 'The homepage design does not match the client requirements.', 'In Progress', 'Medium', 2),
+                                                                                       ('ISS-003', 'Database connection error', 'There is an error connecting to the database which is affecting the application.', 'Open', 'High', 3),
+                                                                                       ('ISS-004', 'Performance optimization needed', 'The application is running slow and needs performance optimization.', 'Open', 'Low', 4),
+                                                                                       ('ISS-005', 'Feature request: Advanced search', 'A user has requested an advanced search feature to be added to the application.', 'Open', 'Medium', 5);
+
+INSERT INTO labels (name) VALUES
+                              ('Bug'),
+                              ('Design'),
+                              ('Database'),
+                              ('Performance'),
+                              ('Feature');
+
+INSERT INTO issue_labels (issue_id, label_id) VALUES
+                                                  (1, 1),
+                                                  (2, 2),
+                                                  (3, 3),
+                                                  (4, 4),
+                                                  (5, 5);

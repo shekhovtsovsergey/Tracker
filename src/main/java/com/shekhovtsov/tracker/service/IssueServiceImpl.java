@@ -1,5 +1,6 @@
 package com.shekhovtsov.tracker.service;
 
+import com.shekhovtsov.tracker.converter.IssueConverter;
 import com.shekhovtsov.tracker.dao.IssueDao;
 import com.shekhovtsov.tracker.dto.IssueDto;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 public class IssueServiceImpl implements IssueService {
 
     private final IssueDao issueDao;
+    private final IssueConverter issueConverter;
 
 
 
