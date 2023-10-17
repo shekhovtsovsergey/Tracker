@@ -11,11 +11,12 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
+@CrossOrigin
 public class IssueController {
 
     private final IssueService issueService;
 
-    @GetMapping("/api/v1/issues")
+    @GetMapping("/issues")
     public List<IssueDto> getList() {
         return issueService.getAllIssues();
     }
