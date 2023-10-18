@@ -3,12 +3,13 @@ package com.shekhovtsov.tracker.service;
 import com.shekhovtsov.tracker.converter.IssueConverter;
 import com.shekhovtsov.tracker.dao.IssueDao;
 import com.shekhovtsov.tracker.dto.IssueDto;
+import com.shekhovtsov.tracker.model.Issue;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -19,30 +20,37 @@ public class IssueServiceImpl implements IssueService {
     private final IssueDao issueDao;
     private final IssueConverter issueConverter;
 
-
-
     @Override
-    public List<IssueDto> getAllIssues() {
+    public List<IssueDto> getAll() {
         return issueDao.findAll().stream().map(issueConverter::entityToDto).collect(Collectors.toList());
     }
 
     @Override
-    public List<IssueDto> deleteIssueById(Long id) {
-        return null;
+    public void deleteById(Long id) {
+        issueDao.deleteById(id);
     }
 
     @Override
-    public IssueDto createIssue(IssueDto issueDto) {
-        return null;
+    public void create(IssueDto issueDto) {
+        Issue issue = issueConverter.dtoToEntity(issueDto);
+        Issue savedIssue = issueDao.save(issue);
+        issueConverter.entityToDto(savedIssue);
     }
 
     @Override
-    public IssueDto updateIssue(IssueDto issueDto) {
-        return null;
+    public void update(IssueDto issueDto) {
+        Issue issue = issueConverter.dtoToEntity(issueDto);
+        Issue savedIssue = issueDao.save(issue);
+        issueConverter.entityToDto(savedIssue);
     }
 
     @Override
-    public IssueDto getIssueById(Long id) {
+    public IssueDto getById(String id) {
+        Optional<Issue> issueOptional = Optional.ofNullable(issueDao.findByVisibleId(id));
+        if (issueOptional.isPresent()) {
+            Issue issue = issueOptional.get();
+            return issueConverter.entityToDto(issue);
+        }
         return null;
     }
 }

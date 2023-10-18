@@ -1,7 +1,8 @@
 CREATE TABLE users (
                        id INT AUTO_INCREMENT PRIMARY KEY,
                        name VARCHAR(255),
-                       email VARCHAR(255)
+                       email VARCHAR(255),
+                       domain VARCHAR(255)
 );
 
 
@@ -18,7 +19,8 @@ CREATE TABLE issues (
 
 CREATE TABLE labels (
                         id INT AUTO_INCREMENT PRIMARY KEY,
-                        name VARCHAR(255)
+                        value VARCHAR(255),
+                        domain VARCHAR(255)
 );
 
 CREATE TABLE issue_labels (
@@ -27,4 +29,14 @@ CREATE TABLE issue_labels (
                               FOREIGN KEY (issue_id) REFERENCES issues(id),
                               FOREIGN KEY (label_id) REFERENCES labels(id),
                               PRIMARY KEY (issue_id, label_id)
+);
+
+CREATE TABLE comments (
+                          id INT,
+                          text VARCHAR(255),
+                          date DATE,
+                          user_id INT,
+                          issue_id INT,
+                          FOREIGN KEY (user_id) REFERENCES users(id),
+                          FOREIGN KEY (issue_id) REFERENCES issues(id)
 );

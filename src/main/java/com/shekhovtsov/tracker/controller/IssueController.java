@@ -18,27 +18,27 @@ public class IssueController {
 
     @GetMapping("/issues")
     public List<IssueDto> getList() {
-        return issueService.getAllIssues();
+        return issueService.getAll();
     }
 
-    @GetMapping("/api/v1/issues/{id}")
-    public IssueDto getById(@PathVariable(name = "id") Long id)  {
-        return issueService.getIssueById(id);
+    @GetMapping("/issues/{id}")
+    public IssueDto getById(@PathVariable(name = "id") String id)  {
+        return issueService.getById(id);
     }
 
-    @DeleteMapping("/api/v1/issues/{id}")
+    @DeleteMapping("/issues/{id}")
     public void deleteById(@PathVariable(name = "id") Long id) {
-        issueService.deleteIssueById(id);
+        issueService.deleteById(id);
     }
 
-    @PutMapping("/api/v1/issues/{id}")
-    public IssueDto update(@RequestBody IssueDto issueDto )  {
-        return issueService.updateIssue(issueDto);
+    @PutMapping("/issues/{id}")
+    public void update(@RequestBody IssueDto issueDto )  {
+        issueService.update(issueDto);
     }
 
-    @PostMapping("/api/v1/issues")
-    public IssueDto create(@RequestBody IssueDto issueDto)  {
-        return issueService.createIssue(issueDto);
+    @PostMapping("/issues")
+    public void create(@RequestBody IssueDto issueDto)  {
+        issueService.create(issueDto);
     }
 
 }

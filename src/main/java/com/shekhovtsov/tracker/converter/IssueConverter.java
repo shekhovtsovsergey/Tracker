@@ -10,7 +10,19 @@ import org.springframework.stereotype.Component;
 public class IssueConverter {
 
     public IssueDto entityToDto(Issue issue) {
-        return new IssueDto(issue.getId(), issue.getVisibleId(), issue.getTitle(), issue.getDescription(), issue.getStatus().toString(), issue.getPriority(), issue.getAssignee());
+        return new IssueDto(issue.getId().toString(), issue.getVisibleId(), issue.getTitle(), issue.getDescription(), issue.getStatus().toString(), issue.getPriority(), issue.getAssignee());
+    }
+
+    public Issue dtoToEntity(IssueDto issueDto) {
+        Issue issue = new Issue();
+        issue.setId(Long.valueOf(issueDto.getId()));
+        issue.setVisibleId(issueDto.getVisibleId());
+        issue.setTitle(issueDto.getTitle());
+        issue.setDescription(issueDto.getDescription());
+        issue.setStatus(Issue.IssueStatus.valueOf(issueDto.getStatus()));
+        issue.setPriority(issueDto.getPriority());
+        issue.setAssignee(issueDto.getAssignee());
+        return issue;
     }
 
 }
