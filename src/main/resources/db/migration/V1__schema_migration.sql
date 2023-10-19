@@ -23,7 +23,7 @@ CREATE TABLE labels (
                         domain VARCHAR(255)
 );
 
-CREATE TABLE issue_labels (
+CREATE TABLE issues_labels (
                               issue_id INT,
                               label_id INT,
                               FOREIGN KEY (issue_id) REFERENCES issues(id),

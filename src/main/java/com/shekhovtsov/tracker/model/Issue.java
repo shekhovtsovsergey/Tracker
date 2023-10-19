@@ -28,7 +28,12 @@ public class Issue {
     @Enumerated(EnumType.STRING)
     private Priority priority;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "issues_labels",
+            joinColumns = @JoinColumn(name = "issue_id"),
+            inverseJoinColumns = @JoinColumn(name = "label_id")
+    )
     private List<Label> labels;
 
     @OneToOne

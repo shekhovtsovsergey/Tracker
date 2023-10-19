@@ -7,6 +7,7 @@ import com.shekhovtsov.tracker.model.Issue;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +21,7 @@ public class IssueServiceImpl implements IssueService {
     private final IssueDao issueDao;
     private final IssueConverter issueConverter;
 
+    @Transactional
     @Override
     public List<IssueDto> getAll() {
         return issueDao.findAll().stream().map(issueConverter::entityToDto).collect(Collectors.toList());
@@ -44,6 +46,7 @@ public class IssueServiceImpl implements IssueService {
         issueConverter.entityToDto(savedIssue);
     }
 
+    @Transactional
     @Override
     public IssueDto getById(String id) {
         System.out.println(issueDao.findByVisibleId(id));

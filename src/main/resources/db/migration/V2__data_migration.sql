@@ -19,7 +19,7 @@ INSERT INTO labels (value, domain) VALUES
                               ('Performance','programming'),
                               ('Feature','programming');
 
-INSERT INTO issue_labels (issue_id, label_id) VALUES
+INSERT INTO issues_labels (issue_id, label_id) VALUES
                                                   (1, 1),
                                                   (2, 2),
                                                   (3, 3),
