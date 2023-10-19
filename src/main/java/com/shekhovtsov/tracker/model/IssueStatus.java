@@ -1,6 +1,10 @@
 package com.shekhovtsov.tracker.model;
 
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.shekhovtsov.tracker.component.IssueStatusDeserializer;
+import com.shekhovtsov.tracker.component.IssueStatusSerializer;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -9,6 +13,8 @@ import java.util.List;
 
 @Getter
 @RequiredArgsConstructor
+@JsonDeserialize(using = IssueStatusDeserializer.class)
+@JsonSerialize(using = IssueStatusSerializer.class)
 public enum IssueStatus {
 
     NEW, ANALYSIS, DEVELOPMENT, REVIEW, DEPLOYMENT, TESTING, FEEDBACK, VERIFIED, DONE, CLOSED;

@@ -46,6 +46,7 @@ public class IssueServiceImpl implements IssueService {
 
     @Override
     public IssueDto getById(String id) {
+        System.out.println(issueDao.findByVisibleId(id));
         Optional<Issue> issueOptional = Optional.ofNullable(issueDao.findByVisibleId(id));
         if (issueOptional.isPresent()) {
             Issue issue = issueOptional.get();
