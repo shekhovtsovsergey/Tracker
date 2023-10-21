@@ -9,6 +9,7 @@ import com.shekhovtsov.tracker.model.Issue;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +39,7 @@ public class CommentServiceImpl implements CommentService {
 
     }
 
+    @Transactional
     @Override
     public List<CommentDto> getById(String id) {
         IssueDto issue = issueService.getById(id);

@@ -1,5 +1,7 @@
 package com.shekhovtsov.tracker.dto;
 
+import com.shekhovtsov.tracker.model.Issue;
+import com.shekhovtsov.tracker.model.User;
 import lombok.*;
 
 @Getter
@@ -12,7 +14,7 @@ public class CommentDto {
     private String id;
     private String text;
     private long date;
-    private String userId;
-    private String issueId;
+    private User user;
+    private Issue issue;
 
 }

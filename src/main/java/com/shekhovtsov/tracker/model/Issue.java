@@ -46,6 +46,6 @@ public class Issue {
 
     @AllArgsConstructor
     public enum IssueStatus {
-        OPEN, IN_PROGRESS, CLOSED;
+        NEW;
     }
 }

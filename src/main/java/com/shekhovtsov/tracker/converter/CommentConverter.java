@@ -14,7 +14,8 @@ public class CommentConverter {
         commentDto.setId(comment.getId().toString());
         commentDto.setText(comment.getText());
         commentDto.setDate(comment.getDate().getTime());
-        commentDto.setUserId(comment.getUser().toString());
+        commentDto.setUser(comment.getUser());
+        commentDto.setIssue(comment.getIssue());
         return commentDto;
     }
 

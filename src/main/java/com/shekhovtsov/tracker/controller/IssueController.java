@@ -23,7 +23,9 @@ public class IssueController {
 
     @GetMapping("/issues/{id}")
     public IssueDto getById(@PathVariable(name = "id") String id)  {
-        return issueService.getById(id);
+        IssueDto issueDto  = issueService.getById(id);
+        System.out.println("Hello " + issueDto);
+        return issueDto;
     }
 
     @DeleteMapping("/issues/{id}")

@@ -7,6 +7,7 @@ import com.shekhovtsov.tracker.model.Label;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +21,7 @@ public class LabelServiceImpl implements LabelService{
     private final LabelDao labelDao;
     private final LabelConverter labelConverter;
 
+    @Transactional
     @Override
     public List<LabelDto> getAll() {
         return labelDao.findAll().stream().map(labelConverter::entityToDto).collect(Collectors.toList());

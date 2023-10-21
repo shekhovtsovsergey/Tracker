@@ -6,11 +6,11 @@ INSERT INTO users (name, email, domain) VALUES
                                     ('Daniel Thompson', 'daniel.thompson@example.com','programming');
 
 INSERT INTO issues (visible_id, title, description, status, priority, assignee_id) VALUES
-                                                                                       ('ISS-001', 'Bug in login page', 'There is a bug in the login page where users cannot enter their credentials.','OPEN', 'HIGH', 1),
-                                                                                       ('ISS-002', 'Design issue in homepage', 'The homepage design does not match the client requirements.', 'OPEN', 'MEDIUM', 2),
-                                                                                       ('ISS-003', 'Database connection error', 'There is an error connecting to the database which is affecting the application.', 'OPEN', 'HIGH', 3),
-                                                                                       ('ISS-004', 'Performance optimization needed', 'The application is running slow and needs performance optimization.', 'OPEN', 'LOW', 4),
-                                                                                       ('ISS-005', 'Feature request: Advanced search', 'A user has requested an advanced search feature to be added to the application.', 'OPEN', 'MEDIUM', 5);
+                                                                                       ('ISS-001', 'Bug in login page', 'There is a bug in the login page where users cannot enter their credentials.','NEW', 'HIGH', 1),
+                                                                                       ('ISS-002', 'Design issue in homepage', 'The homepage design does not match the client requirements.', 'NEW', 'MEDIUM', 2),
+                                                                                       ('ISS-003', 'Database connection error', 'There is an error connecting to the database which is affecting the application.', 'NEW', 'HIGH', 3),
+                                                                                       ('ISS-004', 'Performance optimization needed', 'The application is running slow and needs performance optimization.', 'NEW', 'LOW', 4),
+                                                                                       ('ISS-005', 'Feature request: Advanced search', 'A user has requested an advanced search feature to be added to the application.', 'NEW', 'MEDIUM', 5);
 
 INSERT INTO labels (value, domain) VALUES
                               ('Bug','programming'),
