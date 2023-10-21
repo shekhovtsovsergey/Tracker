@@ -24,7 +24,6 @@ public class IssueController {
     @GetMapping("/issues/{id}")
     public IssueDto getById(@PathVariable(name = "id") String id)  {
         IssueDto issueDto  = issueService.getById(id);
-        System.out.println("Hello " + issueDto);
         return issueDto;
     }
 
@@ -34,7 +33,8 @@ public class IssueController {
     }
 
     @PutMapping("/issues/{id}")
-    public void update(@RequestBody IssueDto issueDto )  {
+    public void update(@RequestBody IssueDto issueDto, @PathVariable(name = "id") String id)  {
+        issueDto.setId(id);
         issueService.update(issueDto);
     }
 

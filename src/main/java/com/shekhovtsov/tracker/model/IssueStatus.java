@@ -50,11 +50,8 @@ public enum IssueStatus {
         CLOSED.previous = List.of();
         CLOSED.next = List.of(IssueStatus.NEW);
     }
-
     @Getter
     private List<IssueStatus> previous;
-
     @Getter
     private List<IssueStatus> next;
-
 }

@@ -39,12 +39,46 @@ public class IssueServiceImpl implements IssueService {
         issueConverter.entityToDto(savedIssue);
     }
 
+//    @Override
+//    public void update(IssueDto issueDto) {
+//        Issue issue = issueConverter.dtoToEntity(issueDto);
+//        Issue savedIssue = issueDao.save(issue);
+//        issueConverter.entityToDto(savedIssue);
+//    }
+
+    @Transactional
     @Override
     public void update(IssueDto issueDto) {
-        Issue issue = issueConverter.dtoToEntity(issueDto);
+        Issue issue = issueDao.findByVisibleId(issueDto.getId());
+        if (issue == null) {
+            throw new RuntimeException("Issue not found");
+        }
+        if (issueDto.getVisibleId() != null) {
+            issue.setVisibleId(issueDto.getVisibleId());
+        }
+        if (issueDto.getTitle() != null) {
+            issue.setTitle(issueDto.getTitle());
+        }
+        if (issueDto.getDescription() != null) {
+            issue.setDescription(issueDto.getDescription());
+        }
+        if (issueDto.getStatus() != null) {
+            issue.setStatus(issueDto.getStatus());
+        }
+        if (issueDto.getLabels() != null) {
+            issue.setLabels(issueDto.getLabels());
+        }
+        if (issueDto.getPriority() != null) {
+            issue.setPriority(issueDto.getPriority());
+        }
+        if (issueDto.getAssignee() != null) {
+            issue.setAssignee(issueDto.getAssignee());
+        }
         Issue savedIssue = issueDao.save(issue);
         issueConverter.entityToDto(savedIssue);
     }
+
+
 
     @Transactional
     @Override

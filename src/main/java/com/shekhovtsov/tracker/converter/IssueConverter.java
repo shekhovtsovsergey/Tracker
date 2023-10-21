@@ -19,7 +19,7 @@ public class IssueConverter {
             Label label = new Label(issueLabel.getId(), issueLabel.getValue(), issueLabel.getDomain());
             labelList.add(label);
         }
-        return new IssueDto(issue.getId().toString(), issue.getVisibleId(), issue.getTitle(), issue.getDescription(), issue.getStatus().toString(), labelList, issue.getPriority(), issue.getAssignee());
+        return new IssueDto(issue.getId().toString(), issue.getVisibleId(), issue.getTitle(), issue.getDescription(), issue.getStatus(), labelList, issue.getPriority(), issue.getAssignee());
 
     }
 
@@ -29,7 +29,7 @@ public class IssueConverter {
         issue.setVisibleId(issueDto.getVisibleId());
         issue.setTitle(issueDto.getTitle());
         issue.setDescription(issueDto.getDescription());
-        issue.setStatus(Issue.IssueStatus.valueOf(issueDto.getStatus()));
+        issue.setStatus(issue.getStatus());
         issue.setPriority(issueDto.getPriority());
         issue.setAssignee(issueDto.getAssignee());
         return issue;

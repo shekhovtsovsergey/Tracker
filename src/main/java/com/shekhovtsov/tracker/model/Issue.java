@@ -44,8 +44,5 @@ public class Issue {
         VERY_LOW, LOW, MEDIUM, HIGH, VERY_HIGH;
     }
 
-    @AllArgsConstructor
-    public enum IssueStatus {
-        NEW;
-    }
+
 }
