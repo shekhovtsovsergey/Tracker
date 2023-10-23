@@ -1,15 +1,12 @@
 package com.shekhovtsov.tracker.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
+@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "labels")
@@ -19,5 +16,10 @@ public class Label {
     private String id;
     private String value;
     private String domain;
+
+    public Label(String id) {
+        this.id = id;
+    }
+
 
 }

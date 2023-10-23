@@ -36,3 +36,24 @@ INSERT INTO comments (id, text, date, user_id, issue_id) VALUES (7, 'Seventh com
 INSERT INTO comments (id, text, date, user_id, issue_id) VALUES (8, 'Eighth comment', '2021-08-08', 2, 4);
 INSERT INTO comments (id, text, date, user_id, issue_id) VALUES (9, 'Ninth comment', '2021-09-09', 3, 5);
 INSERT INTO comments (id, text, date, user_id, issue_id) VALUES (10, 'Tenth comment', '2021-10-10', 1, 5);
+
+INSERT INTO tickets (id, name, description, analytics, development, testing)
+SELECT
+    t.id,
+    CONCAT('Ticket', t.id) AS name,
+    CONCAT('Description', t.id) AS description,
+    FLOOR(RAND() * 5) + 1 AS analytics,
+    FLOOR(RAND() * 5) + 1 AS development,
+    FLOOR(RAND() * 5) + 1 AS testing
+FROM (
+         SELECT
+             (ROW_NUMBER() OVER ()) AS id
+         FROM
+             information_schema.columns
+                 LIMIT 100
+     ) t;
+
+INSERT INTO tasks (id, name) VALUES
+                                 (1, 'analytics'),
+                                 (2, 'development'),
+                                 (3, 'testing');
